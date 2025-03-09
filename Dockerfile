@@ -1,11 +1,16 @@
 FROM python:3.12-slim
 
+# 作業ディレクトリの設定
 WORKDIR /app
 
+# 必要なパッケージのインストール
+RUN pip install streamlit
+
+# アプリのソースコードをコピー
 COPY . /app
 
-RUN pip install fastapi uvicorn
+# Streamlitのデフォルトポート
+EXPOSE 8501
 
-EXPOSE 8080
-
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+# Streamlitの起動コマンドを指定
+CMD ["streamlit", "run", "main.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
