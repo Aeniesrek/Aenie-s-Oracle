@@ -36,7 +36,7 @@ today = date.today().strftime("%Y-%m-%d")
 user_ip = get_remote_ip()
 fortune = get_fortune(user_ip, today)
 
-# Streamlit で表示
+# Streamlitで表示
 st.title("🌟今日のあなたの運勢🌟")
 st.write(f"日付：{today}")
 st.header(f"{fortune}")
@@ -47,8 +47,27 @@ tweet_text = f"今日の運勢: {fortune} (日付: {today}) #運勢 #今日の�
 encoded_text = urllib.parse.quote(tweet_text)
 twitter_url = f"https://twitter.com/intent/tweet?text={encoded_text}"
 
-# Twitterの投稿画面を新しいタブで開くボタン
-st.markdown(
-    f'<a href="{twitter_url}" target="_blank"><button style="padding:10px;font-size:16px;">結果をツイート</button></a>',
-    unsafe_allow_html=True
-)
+# FontAwesomeのTwitterアイコンを用いたツイートボタンのHTMLコード
+tweet_icon_html = f'''
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<div style="margin-top:20px;">
+    <a href="{twitter_url}" target="_blank" style="text-decoration:none;">
+        <i class="fab fa-twitter" style="font-size:48px; color:#1DA1F2;"></i>
+    </a>
+</div>
+'''
+
+st.markdown(tweet_icon_html, unsafe_allow_html=True)
+
+# CSS を利用して上部のメニューを非表示にする
+hide_streamlit_style = """
+    <style>
+    /* 三点リーダ（ハンバーガーメニュー）の非表示 */
+    #MainMenu {visibility: hidden;}
+    /* ヘッダー全体（デプロイボタン含む）の非表示 */
+    header {visibility: hidden;}
+    /* フッターも非表示にする場合 */
+    footer {visibility: hidden;}
+    </style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
