@@ -1,16 +1,13 @@
 FROM python:3.12-slim
 
-# 作業ディレクトリの設定
 WORKDIR /app
 
-# 必要なパッケージのインストール
-RUN pip install streamlit
+# FlaskとGunicornのインストール
+RUN pip install flask gunicorn
 
-# アプリのソースコードをコピー
 COPY . /app
 
-# Streamlitのデフォルトポート
-EXPOSE 8501
+EXPOSE 5000
 
-# Streamlitの起動コマンドを指定
-CMD ["streamlit", "run", "main.py", "--server.port", "8080", "--server.address", "0.0.0.0"]
+# Gunicornを使ってFlaskアプリを起動
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]

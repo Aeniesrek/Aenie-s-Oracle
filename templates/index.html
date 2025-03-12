@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <title>今日の運勢</title>
+
+    <!-- Open Graph タグ -->
+    <meta property="og:title" content="今日の運勢" />
+    <meta property="og:description" content="あなたの今日の運勢をチェック！" />
+    <meta
+      property="og:image"
+      content="https://example.com/path/to/your/image.jpg"
+    />
+    <meta property="og:url" content="{{ request.url }}" />
+
+    <!-- Twitter Card タグ -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="今日の運勢" />
+    <meta name="twitter:description" content="あなたの今日の運勢をチェック！" />
+    <meta
+      name="twitter:image"
+      content="https://example.com/path/to/your/image.jpg"
+    />
+
+    <!-- 広告スクリプト例（例：Google AdSense） -->
+    <!--
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-XXXXXXXXXXXXXXXX",
+              enable_page_level_ads: true
+         });
+    </script>
+    -->
+
+    <!-- FontAwesome for Twitter Icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <h1>🌟今日のあなたの運勢🌟</h1>
+    <p>日付：{{ today }}</p>
+    <h2>{{ fortune }}</h2>
+    <p>ページを再読み込みしても、今日の運勢は変わりません。</p>
+
+    <!-- ツイートボタン -->
+    <div style="margin-top: 20px">
+      <a href="{{ twitter_url }}" target="_blank" style="text-decoration: none">
+        <i class="fab fa-twitter" style="font-size: 48px; color: #1da1f2"></i>
+      </a>
+    </div>
+
+    <!-- 他の広告やマネタイズ用コンテンツもここに追加可能 -->
+  </body>
+</html>
