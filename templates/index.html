@@ -2,6 +2,7 @@
 <html lang="ja">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>今日の運勢</title>
 
     <!-- Open Graph タグ -->
@@ -91,6 +92,26 @@
       .tweet-btn a:hover {
         transform: scale(1.1);
       }
+
+      /* スマホなど小さい画面向けの調整 */
+      @media (max-width: 768px) {
+        .container {
+          margin: 20px;
+          padding: 30px 15px;
+        }
+        h1 {
+          font-size: 3rem;
+        }
+        h2 {
+          font-size: 2.2rem;
+        }
+        p {
+          font-size: 1.3rem;
+        }
+        .tweet-btn i {
+          font-size: 56px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -102,10 +123,9 @@
       <!-- ツイートボタン -->
       <div class="tweet-btn">
         <a href="{{ twitter_url }}" target="_blank">
-          <i class="fab fa-twitter" style="font-size: 48px; color: #1da1f2"></i>
+          <i class="fab fa-twitter"></i>
         </a>
       </div>
     </div>
-    <!-- 他の広告やマネタイズ用コンテンツもここに追加可能 -->
   </body>
 </html>
