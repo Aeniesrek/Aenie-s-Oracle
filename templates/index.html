@@ -22,36 +22,90 @@
       content="https://example.com/path/to/your/image.jpg"
     />
 
-    <!-- 広告スクリプト例（例：Google AdSense） -->
-    <!--
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({
-              google_ad_client: "ca-pub-XXXXXXXXXXXXXXXX",
-              enable_page_level_ads: true
-         });
-    </script>
-    -->
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- FontAwesome for Twitter Icon -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+
+    <!-- CSSスタイル -->
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Montserrat", sans-serif;
+        background: linear-gradient(135deg, #ece9e6, #ffffff);
+        color: #333;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 40px 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+        text-align: center;
+        color: #1da1f2;
+        margin: 20px 0;
+      }
+
+      p {
+        font-size: 1.1rem;
+        text-align: center;
+        line-height: 1.6;
+      }
+
+      .date {
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+
+      .tweet-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+
+      .tweet-btn a {
+        text-decoration: none;
+        transition: transform 0.2s ease;
+      }
+
+      .tweet-btn a:hover {
+        transform: scale(1.1);
+      }
+    </style>
   </head>
   <body>
-    <h1>🌟今日のあなたの運勢🌟</h1>
-    <p>日付：{{ today }}</p>
-    <h2>{{ fortune }}</h2>
-    <p>ページを再読み込みしても、今日の運勢は変わりません。</p>
-
-    <!-- ツイートボタン -->
-    <div style="margin-top: 20px">
-      <a href="{{ twitter_url }}" target="_blank" style="text-decoration: none">
-        <i class="fab fa-twitter" style="font-size: 48px; color: #1da1f2"></i>
-      </a>
+    <div class="container">
+      <h1>🌟 今日のあなたの運勢 🌟</h1>
+      <p class="date">日付：{{ today }}</p>
+      <h2>{{ fortune }}</h2>
+      <p>ページを再読み込みしても、今日の運勢は変わりません。</p>
+      <!-- ツイートボタン -->
+      <div class="tweet-btn">
+        <a href="{{ twitter_url }}" target="_blank">
+          <i class="fab fa-twitter" style="font-size: 48px; color: #1da1f2"></i>
+        </a>
+      </div>
     </div>
-
     <!-- 他の広告やマネタイズ用コンテンツもここに追加可能 -->
   </body>
 </html>
