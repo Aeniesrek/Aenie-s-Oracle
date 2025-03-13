@@ -46,25 +46,25 @@
       }
 
       .container {
-        max-width: 600px;
-        margin: 50px auto;
+        max-width: 37.5rem; /*600px / 16 = 37.5rem*/
+        margin: 3.125rem auto; /*50px / 16 = 3.125rem*/
         background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 40px 20px;
+        border-radius: 0.625rem; /*10px / 16 = 0.625rem*/
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /*4px:0.25rem, 12px:0.75rem*/
+        padding: 2.5rem 1.25rem; /*40px:2.5rem, 20px:1.25rem*/
       }
 
       h1 {
         font-size: 2.5rem;
         text-align: center;
-        margin-bottom: 10px;
+        margin-bottom: 0.625rem; /*10px / 16*/
       }
 
       h2 {
         font-size: 1.8rem;
         text-align: center;
         color: #1da1f2;
-        margin: 20px 0;
+        margin: 1.25rem 0; /*20px / 16*/
       }
 
       p {
@@ -75,13 +75,13 @@
 
       .date {
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 1.25rem; /*20px / 16*/
       }
 
       .tweet-btn {
         display: flex;
         justify-content: center;
-        margin-top: 30px;
+        margin-top: 1.875rem; /*30px / 16*/
       }
 
       .tweet-btn a {
@@ -94,10 +94,11 @@
       }
 
       /* スマホなど小さい画面向けの調整 */
-      @media (max-width: 768px) {
+      @media (max-width: 48rem) {
+        /*768px / 16 = 48rem*/
         .container {
-          margin: 20px;
-          padding: 30px 15px;
+          margin: 1.25rem; /*20px / 16*/
+          padding: 1.875rem 0.938rem; /*30px:1.875rem, 15px:0.938rem*/
         }
         h1 {
           font-size: 3rem;
@@ -109,7 +110,7 @@
           font-size: 1.3rem;
         }
         .tweet-btn i {
-          font-size: 56px;
+          font-size: 3.5rem; /*56px / 16 = 3.5rem*/
         }
       }
     </style>
