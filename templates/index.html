@@ -5,112 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>今日の運勢</title>
 
-    <!-- Open Graph タグ -->
-    <meta property="og:title" content="今日の運勢" />
-    <meta property="og:description" content="あなたの今日の運勢をチェック！" />
-    <meta
-      property="og:image"
-      content="https://example.com/path/to/your/image.jpg"
-    />
-    <meta property="og:url" content="{{ request.url }}" />
-
-    <!-- Twitter Card タグ -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="今日の運勢" />
-    <meta name="twitter:description" content="あなたの今日の運勢をチェック！" />
-    <meta
-      name="twitter:image"
-      content="https://example.com/path/to/your/image.jpg"
-    />
-
     <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap"
       rel="stylesheet"
     />
-
-    <!-- FontAwesome for Twitter Icon -->
+    <!-- FontAwesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
 
-    <!-- CSSスタイル -->
     <style>
+      html,
       body {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: inherit;
+      }
+
+      body {
         font-family: "Montserrat", sans-serif;
         background: linear-gradient(135deg, #ece9e6, #ffffff);
-        color: #333;
+        /* 画面全体をFlexで使う場合 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh; /* 画面の高さ分確保 */
+        overflow-x: hidden; /* 横スクロール対策 */
       }
 
       .container {
-        max-width: 37.5rem; /*600px / 16 = 37.5rem*/
-        margin: 3.125rem auto; /*50px / 16 = 3.125rem*/
+        width: 100%;
+        max-width: 37.5rem; /* 600px */
+        min-height: 100vh; /* 画面高さ分の余白を埋める */
         background: #fff;
-        border-radius: 0.625rem; /*10px / 16 = 0.625rem*/
-        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1); /*4px:0.25rem, 12px:0.75rem*/
-        padding: 2.5rem 1.25rem; /*40px:2.5rem, 20px:1.25rem*/
+        border-radius: 0.625rem; /* 10px */
+        box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+        padding: 2.5rem 1.25rem; /* 40px, 20px */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* 中身を上下中央に */
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+        text-align: center;
+        overflow-wrap: break-word; /* 日本語の折返し対策 */
       }
 
       h1 {
-        font-size: 2.5rem;
-        text-align: center;
-        margin-bottom: 0.625rem; /*10px / 16*/
-      }
-
-      h2 {
-        font-size: 1.8rem;
-        text-align: center;
-        color: #1da1f2;
-        margin: 1.25rem 0; /*20px / 16*/
-      }
-
-      p {
-        font-size: 1.1rem;
-        text-align: center;
-        line-height: 1.6;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
       }
 
       .date {
         font-weight: bold;
-        margin-bottom: 1.25rem; /*20px / 16*/
+        margin-bottom: 1.25rem; /* 20px */
+      }
+
+      h2 {
+        font-size: 1.6rem;
+        color: #1da1f2;
+        margin: 1.25rem 0;
+      }
+
+      p {
+        font-size: 1rem;
+        line-height: 1.6;
       }
 
       .tweet-btn {
         display: flex;
         justify-content: center;
-        margin-top: 1.875rem; /*30px / 16*/
+        margin-top: 1.875rem; /* 30px */
       }
 
       .tweet-btn a {
         text-decoration: none;
         transition: transform 0.2s ease;
+        color: #1da1f2; /* ツイッターの色 */
       }
-
       .tweet-btn a:hover {
         transform: scale(1.1);
       }
 
+      .tweet-btn i {
+        font-size: 2.5rem; /* アイコンサイズを大きくする */
+      }
+
       /* スマホなど小さい画面向けの調整 */
       @media (max-width: 48rem) {
-        /*768px / 16 = 48rem*/
+        /* 768px */
         .container {
-          margin: 1.25rem; /*20px / 16*/
-          padding: 1.875rem 0.938rem; /*30px:1.875rem, 15px:0.938rem*/
+          padding: 2rem 1rem;
+          min-height: 100vh; /* そのままでもOK */
         }
         h1 {
-          font-size: 3rem;
+          font-size: 1.8rem;
         }
         h2 {
-          font-size: 2.2rem;
+          font-size: 1.4rem;
         }
         p {
-          font-size: 1.3rem;
+          font-size: 0.95rem;
         }
         .tweet-btn i {
-          font-size: 3.5rem; /*56px / 16 = 3.5rem*/
+          font-size: 2.5rem;
         }
       }
     </style>
@@ -121,7 +129,6 @@
       <p class="date">日付：{{ today }}</p>
       <h2>{{ fortune }}</h2>
       <p>ページを再読み込みしても、今日の運勢は変わりません。</p>
-      <!-- ツイートボタン -->
       <div class="tweet-btn">
         <a href="{{ twitter_url }}" target="_blank">
           <i class="fab fa-twitter"></i>
