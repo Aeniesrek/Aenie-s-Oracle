@@ -3,6 +3,26 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Twitter Card 設定 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="今日の運勢" />
+    <meta
+      name="twitter:description"
+      content="今日のあなたの運勢をチェックしましょう！"
+    />
+    <meta
+      property="og:image"
+      content="https://aenie-s-oracle-585411739425.asia-northeast1.run.app/static/image.webp"
+    />
+    <meta
+      name="twitter:image"
+      content="https://aenie-s-oracle-585411739425.asia-northeast1.run.app/static/image.webp"
+    />
+    <meta
+      name="twitter:url"
+      content="{{ https://aenie-s-oracle-585411739425.asia-northeast1.run.app }}"
+    />
+
     <title>今日の運勢</title>
 
     <!-- Google Fonts -->
@@ -128,6 +148,7 @@
       <h1>🌟 今日のあなたの運勢 🌟</h1>
       <p class="date">日付：{{ today }}</p>
       <h2>{{ fortune }}</h2>
+      <p>🔥戦闘力：{{ power }}🔥</p>
       <p>ページを再読み込みしても、今日の運勢は変わりません。</p>
       <div class="tweet-btn">
         <a href="{{ twitter_url }}" target="_blank">
