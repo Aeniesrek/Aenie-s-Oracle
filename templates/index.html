@@ -154,12 +154,31 @@
           font-size: 2.5rem;
         }
       }
+      .ad-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem; /* コンテンツとの余白 */
+      }
+
+      .ad-container script {
+        display: inline-block;
+        max-width: 100%;
+      }
+
+      /* モバイル対応 */
+      @media (max-width: 48rem) {
+        .ad-container {
+          margin-top: 0.5rem;
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- admax -->
-    <script src="https://adm.shinobi.jp/s/7542c82fcd4d0919a7dac316c447bc09"></script>
-    <!-- admax -->
+    <div class="ad-container">
+      <!-- admax -->
+      <script src="https://adm.shinobi.jp/s/7542c82fcd4d0919a7dac316c447bc09"></script>
+      <!-- admax -->
+    </div>
     <div class="container">
       <h1>🌟 今日のあなたの運勢 🌟</h1>
       <p class="date">日付：{{ today }}</p>
