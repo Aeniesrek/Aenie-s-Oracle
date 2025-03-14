@@ -14,7 +14,7 @@ import random
 def serve_static(filename):
     return send_from_directory('static', filename)
 
-def generate_combat_power(text: str) -> str:
+def generate_combat_power(text: str) -> tuple[str, int]:
     # 入力文字列の SHA-256 ハッシュ値を整数に変換し、乱数の種とする
     h = hashlib.sha256(text.encode()).hexdigest()
     seed = int(h, 16)
@@ -201,9 +201,7 @@ def generate_combat_power(text: str) -> str:
     
     # その中からランダムにひとつ選ぶ（同じ入力なら同じ結果になります）
     chosen_unit = random.choice(all_units)
-    coef = random.randint(1, 9)
-    
-    return f"{coef}{chosen_unit[0]} (10の{chosen_unit[1]}乗)"
+    return chosen_unit
 
 
 # 運勢の種類
@@ -331,8 +329,10 @@ def index():
     user_ip = request.remote_addr or "unknown"
     fortune = get_fortune(user_ip, today)
     power = generate_combat_power(fortune)
+
     # ツイート用テキストと現在のページURLを取得
-    tweet_text = f"今日の運勢: {fortune} 戦闘力:{power} (日付: {today}) #運勢 #今日の運勢"
+    power_text = f"{random.randint(1, 9)}{power[0]}"
+    tweet_text = f"今日の運勢: {fortune} 戦闘力:{power_text} (日付: {today}) #運勢 #今日の運勢"
     encoded_text = urllib.parse.quote(tweet_text)
     page_url = "https://aenie-s-oracle-585411739425.asia-northeast1.run.app/"
     encoded_url = urllib.parse.quote(page_url)
@@ -342,7 +342,7 @@ def index():
                            today=today, 
                            fortune=fortune, 
                            twitter_url=twitter_url, 
-                           power=power)
+                           power=f"{power_text} (10の{power[1]}乗)")
 
 if __name__ == "__main__":
     app.run(debug=True)
