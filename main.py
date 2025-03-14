@@ -343,7 +343,7 @@ def index():
                            fortune=fortune, 
                            twitter_url=twitter_url, 
                            power=power, 
-                           app_url="https://aenie-s-oracle-585411739425.asia-northeast1.run.app/static/image.webp")
+                           app_url="https://aenie-s-oracle-585411739425.asia-northeast1.run.app/static/image.png")
 
 if __name__ == "__main__":
     app.run(debug=True)
