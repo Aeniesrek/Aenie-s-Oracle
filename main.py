@@ -337,8 +337,13 @@ def index():
     page_url = "https://aenie-s-oracle-585411739425.asia-northeast1.run.app/"
     encoded_url = urllib.parse.quote(page_url)
     twitter_url = f"https://twitter.com/intent/tweet?text={encoded_text}&url={encoded_url}"
-    
-    return render_template("index.html", today=today, fortune=fortune, twitter_url=twitter_url, power=power)
+
+    return render_template("index.html", 
+                           today=today, 
+                           fortune=fortune, 
+                           twitter_url=twitter_url, 
+                           power=power, 
+                           app_url="https://aenie-s-oracle-585411739425.asia-northeast1.run.app/static/image.webp")
 
 if __name__ == "__main__":
     app.run(debug=True)
